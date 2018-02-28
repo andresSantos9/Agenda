@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {NuevoContactoPage} from '../pages'
+
 
 /**
- * Generated class for the LibretaPage page.
+ * Generated class for the NuevoContactoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,21 +12,18 @@ import {NuevoContactoPage} from '../pages'
 
 @IonicPage()
 @Component({
-  selector: 'page-libreta',
-  templateUrl: 'libreta.html',
+  selector: 'page-nuevo-contacto',
+  templateUrl: 'nuevo-contacto.html',
 })
-export class LibretaPage {
+export class NuevoContactoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LibretaPage');
+    console.log('ionViewDidLoad NuevoContactoPage');
   }
 
-  openPage() {
-    // Reset the content nav to have just this page
-    this.navCtrl.push(NuevoContactoPage);
-  }
+ 
 
 }

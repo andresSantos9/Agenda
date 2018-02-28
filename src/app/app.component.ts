@@ -24,7 +24,8 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Contactos', component: LibretaPage },
-      { title: 'Por hacer', component: TodoPage }
+      { title: 'Tareas Pendientes', component: TodoPage },
+      { title: 'Acerca de', component: HomePage}
     ];
 
   }
