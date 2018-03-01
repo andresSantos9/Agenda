@@ -9,7 +9,7 @@
 
   <ion-navbar>
     <ion-buttons end>
-        <button ion-button icon-only (click)="openPage()">
+        <button ion-button icon-only (click)="onLoadNewPage()">
             <ion-icon name="add"></ion-icon>
          </button>
     </ion-buttons>
@@ -19,5 +19,9 @@
 
 
 <ion-content padding>
+
+  <ion-list>
+    <button ion-item *ngFor="let contact of contacts" (click)="onItemTapped($event, contact)">{{contact.nombre}}</button>
+  </ion-list>
 
 </ion-content>

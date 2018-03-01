@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import {NuevoContactoPage} from '../pages'
+import {NuevoContactoPage, VerContactoPage} from '../pages'
+import { ContactService } from '../../services/contacts.service';
 
 /**
  * Generated class for the LibretaPage page.
@@ -17,16 +18,26 @@ import {NuevoContactoPage} from '../pages'
 })
 export class LibretaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  contacts: {nombre:string,numero:string} []=[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LibretaPage');
+  ionViewWillEnter(){
+
+   this.contacts=this.ContactService.getContacts();
+    
   }
 
-  openPage() {
+  onLoadNewPage() {
     // Reset the content nav to have just this page
     this.navCtrl.push(NuevoContactoPage);
+  }
+
+  onItemTapped($event, contact){
+    this.navCtrl.push(VerContactoPage, contact);
+   
+
   }
 
 }
