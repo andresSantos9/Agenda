@@ -5,10 +5,14 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LibretaPage, TodoPage,NuevoContactoPage, VerContactoPage } from '../pages/pages';
-import{ContactService} from '../services/contacts.service'
+import{ContactService} from '../services/contacts.service';
+import {FIREBASE_CONFIG} from '../app/firebase.credentials';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import {AngularFireModule} from 'angularfire2';
+import {AngularFireDatabaseModule} from 'angularfire2/database'
 
 @NgModule({
   declarations: [
@@ -23,6 +27,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

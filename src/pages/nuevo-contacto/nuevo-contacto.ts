@@ -25,7 +25,7 @@ export class NuevoContactoPage {
    
   }
 
-  onAddContact(value: {nombre:string,numero:string}){
+  onAddContact(value: {nombre:string,organizacion:string,movil:string,correo:string}){
 
     this.contactService.addContact(value);
     this.navCtrl.pop();

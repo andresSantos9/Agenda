@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
 
 import {NuevoContactoPage, VerContactoPage} from '../pages'
 import { ContactService } from '../../services/contacts.service';
@@ -18,9 +18,9 @@ import { ContactService } from '../../services/contacts.service';
 })
 export class LibretaPage {
 
-  contacts: {nombre:string,numero:string} []=[];
+  contacts: {nombre:string,organizacion:string,movil:string,correo:string} []=[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService, private alertCtrl: AlertController) {
   }
 
   ionViewWillEnter(){

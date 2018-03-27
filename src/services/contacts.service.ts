@@ -1,10 +1,18 @@
 export class ContactService{
 
-    private contacts: {nombre:string,numero:string} []=[{"nombre":"Andres","numero":"666166669"}];
+    private contacts: {nombre:string,organizacion:string,movil:string,correo:string} []=[{"nombre":"Andres","organizacion":"UC3M","movil":"666666666",correo:"andres@example.com"}];
 
-    addContact(value: {nombre:string,numero:string}){
+    addContact(value: {nombre:string,organizacion:string,movil:string,correo:string}){
         this.contacts.push(value);
         console.log('**nav params:', value);
+    }
+
+    updateContact(){
+
+    }
+
+    removeContact(){
+        
     }
 
     getContacts(){
