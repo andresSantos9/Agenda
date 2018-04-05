@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 
 import {NuevoContactoPage, VerContactoPage} from '../pages'
 import { ContactService } from '../../services/contacts.service';
+import { Contacto } from '../../models/contacto.model';
+import { Observable } from '@firebase/util';
 
 /**
  * Generated class for the LibretaPage page.
@@ -18,14 +20,34 @@ import { ContactService } from '../../services/contacts.service';
 })
 export class LibretaPage {
 
-  contacts: {nombre:string,organizacion:string,movil:string,correo:string} []=[];
+  contacts$: Observable<Contacto[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService, private alertCtrl: AlertController) {
+    
   }
 
   ionViewWillEnter(){
 
-   this.contacts=this.ContactService.getContacts();
+   //this.contacts=this.ContactService.getContacts();
+
+   this.contacts$ = this.ContactService
+     .getContacts()  //Retorna la DB
+     .snapshotChanges() //retorna los cambios en la DB (key and value)
+     .map(
+       /*
+       Estas líneas retornan un array de  objetos con el id del registro y su contenido
+       {
+         "key":"value",
+         contact.name,
+         contact.organization,
+         ...
+       }
+       */
+       changes => {
+         return changes.map(c=> ({
+           key: c.payload.key, ...c.payload.val()
+         }));
+       }); 
     
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ContactService } from '../../services/contacts.service';
+import { Contacto } from '../../models/contacto.model';
 
 
 
@@ -18,19 +19,21 @@ import { ContactService } from '../../services/contacts.service';
 })
 export class NuevoContactoPage {
 
-  
+
 
   constructor(public navCtrl: NavController, private contactService: ContactService) {
 
    
   }
 
-  onAddContact(value: {nombre:string,organizacion:string,movil:string,correo:string}){
+  onAddContact(value: Contacto){
 
-    this.contactService.addContact(value);
+    this.contactService.addContact(value).then(ref => {
+      console.log(ref.key);
+    });
     this.navCtrl.pop();
   }
-x
+
  
 
 }

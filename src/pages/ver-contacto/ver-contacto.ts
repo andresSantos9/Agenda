@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Contacto } from '../../models/contacto.model';
+import { ContactService } from '../../services/contacts.service';
 
 /**
  * Generated class for the VerContactoPage page.
@@ -15,12 +17,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class VerContactoPage {
 
-  contact: {nombre:string,numero:string};
+  contact: Contacto;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private contactService: ContactService) {
 
     this.contact = this.navParams.data;
+    console.log(this.contact.key);
     
+  }
+
+  onUpdateContact(value: Contacto){
+
+    this.contactService.updateContact(value);
+    this.navCtrl.pop();
+
+  }
+
+  onRemoveContact(value: Contacto){
+
+    this.contactService.removeContact(value);
+    this.navCtrl.pop();
+
   }
 
   
