@@ -20,7 +20,7 @@ import { Observable } from '@firebase/util';
 })
 export class LibretaPage {
 
-  contacts$: Observable<Contacto[]>;
+  contacts$: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService, private alertCtrl: AlertController) {
     
