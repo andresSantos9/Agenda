@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 import {NuevoContactoPage, VerContactoPage} from '../pages'
 import { ContactService } from '../../services/contacts.service';
 import { Contacto } from '../../models/contacto.model';
-import { Observable } from '@firebase/util';
+import { Observable } from 'rxjs/Observable';
 
 /**
  * Generated class for the LibretaPage page.
@@ -20,7 +20,7 @@ import { Observable } from '@firebase/util';
 })
 export class LibretaPage {
 
-  contacts$: Observable<any[]>;
+  contacts$: Observable<Contacto[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private ContactService: ContactService, private alertCtrl: AlertController) {
     
